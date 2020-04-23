@@ -1,14 +1,14 @@
 # btg-jokenpo
 Desafio Jogo Jokenpo - API REST em Java 8 e Spring
 
-####O JOGO :
+#### O JOGO :
 
 Programa que analise o resultado de múltiplos jogadores em um jogo de jokenpo.
 
 A solução é resiliente para possíveis mudanças como por exemplo adicionar 
 e remover jogadas, e inserir e remover novos jogadores.
 
-####REQUISITOS :
+#### REQUISITOS :
 
 Os jogadores deverão informar as entradas através das jogadas e o sistema 
 deverá indicar qual o jogador ganhador. 
@@ -24,7 +24,7 @@ Exemplos:
 4. Jogar 
 5. Resultado Jogador 1 Vitória
 
-####ABORDAGEM TÉCNICA :
+#### ABORDAGEM TÉCNICA :
 
 - Linguagem: Java 8
 - Framework: Spring Boot 2.2
