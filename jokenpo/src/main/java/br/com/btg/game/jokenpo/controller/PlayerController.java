@@ -3,7 +3,7 @@ package br.com.btg.game.jokenpo.controller;
 import br.com.btg.game.jokenpo.dto.PlayerRequest;
 import br.com.btg.game.jokenpo.dto.api.ApiResponse;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
-import br.com.btg.game.jokenpo.service.PlayerService;
+import br.com.btg.game.jokenpo.service.impl.PlayerServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,10 +16,10 @@ import javax.websocket.server.PathParam;
 @CrossOrigin(origins = "*")
 public class PlayerController {
 
-    private PlayerService playerService;
+    private PlayerServiceImpl playerService;
 
     @Autowired
-    public PlayerController(PlayerService playerService) {
+    public PlayerController(PlayerServiceImpl playerService) {
         this.playerService = playerService;
     }
 

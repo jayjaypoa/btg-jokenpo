@@ -4,6 +4,7 @@ import br.com.btg.game.jokenpo.dto.PlayerRequest;
 import br.com.btg.game.jokenpo.dto.PlayerResponse;
 import br.com.btg.game.jokenpo.entity.PlayerEntity;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
+import br.com.btg.game.jokenpo.service.impl.PlayerServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +23,7 @@ import java.util.List;
 public class PlayerServiceTest {
 
     @Autowired
-    private PlayerService playerService;
+    private PlayerServiceImpl playerService;
 
     @Test
     public void oneInsertWithSucess() throws Exception {

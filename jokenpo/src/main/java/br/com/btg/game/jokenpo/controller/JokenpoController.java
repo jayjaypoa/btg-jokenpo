@@ -2,7 +2,7 @@ package br.com.btg.game.jokenpo.controller;
 
 import br.com.btg.game.jokenpo.dto.api.ApiResponse;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
-import br.com.btg.game.jokenpo.service.JokenpoService;
+import br.com.btg.game.jokenpo.service.impl.JokenpoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public class JokenpoController {
 
-    private JokenpoService jokenpoService;
+    private JokenpoServiceImpl jokenpoService;
 
     @Autowired
-    public JokenpoController(JokenpoService jokenpoService) {
+    public JokenpoController(JokenpoServiceImpl jokenpoService) {
         this.jokenpoService = jokenpoService;
     }
 

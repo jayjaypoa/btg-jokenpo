@@ -1,15 +1,14 @@
 package br.com.btg.game.jokenpo.service;
 
 import br.com.btg.game.jokenpo.dto.*;
-import br.com.btg.game.jokenpo.enumeration.EnumException;
 import br.com.btg.game.jokenpo.enumeration.EnumMovement;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
+import br.com.btg.game.jokenpo.service.impl.JokenpoServiceImpl;
+import br.com.btg.game.jokenpo.service.impl.MoveServiceImpl;
+import br.com.btg.game.jokenpo.service.impl.PlayerServiceImpl;
 import org.junit.*;
-import org.junit.internal.runners.statements.ExpectException;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -28,13 +27,13 @@ public class JokenpoServiceTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Autowired
-    private PlayerService playerService;
+    private PlayerServiceImpl playerService;
 
     @Autowired
-    private MoveService moveService;
+    private MoveServiceImpl moveService;
 
     @Autowired
-    private JokenpoService jokenpoService;
+    private JokenpoServiceImpl jokenpoService;
 
     @Before
     public void setup(){

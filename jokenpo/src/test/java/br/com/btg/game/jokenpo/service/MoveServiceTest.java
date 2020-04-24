@@ -6,6 +6,8 @@ import br.com.btg.game.jokenpo.dto.PlayerRequest;
 import br.com.btg.game.jokenpo.dto.PlayerResponse;
 import br.com.btg.game.jokenpo.enumeration.EnumMovement;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
+import br.com.btg.game.jokenpo.service.impl.MoveServiceImpl;
+import br.com.btg.game.jokenpo.service.impl.PlayerServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,10 +26,10 @@ import java.util.List;
 public class MoveServiceTest {
 
     @Autowired
-    private PlayerService playerService;
+    private PlayerServiceImpl playerService;
 
     @Autowired
-    private MoveService moveService;
+    private MoveServiceImpl moveService;
 
     @Test
     public void insertManyPlayersForTestWithSucess() throws JokenpoException {
