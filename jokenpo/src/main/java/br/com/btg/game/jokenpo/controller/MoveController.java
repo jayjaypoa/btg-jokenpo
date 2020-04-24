@@ -28,12 +28,11 @@ public class MoveController {
         return ResponseEntity.ok(
                 new ApiResponse<>(this.moveService.insert(moveRequest)));
     }
-/*
+
     @DeleteMapping(value = "{playerName}")
     public ResponseEntity<Object> delete(@PathVariable String playerName) throws JokenpoException {
         return ResponseEntity.ok(new ApiResponse<>(this.moveService.deleteByPlayerName(playerName)));
     }
-*/
 
     @GetMapping(value = "")
     public ResponseEntity<Object> getAll() throws JokenpoException {

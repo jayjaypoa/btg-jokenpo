@@ -20,6 +20,11 @@ public final class PlayerSingleton {
         return PLAYER_INSTANCE;
     }
 
+    public static List<PlayerEntity> clear(){
+        PLAYER_INSTANCE = new ArrayList<PlayerEntity>();
+        return getInstance();
+    }
+
     public String getInfo() {
         return this.INFO;
     }

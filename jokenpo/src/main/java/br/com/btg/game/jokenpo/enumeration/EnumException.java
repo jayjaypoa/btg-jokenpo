@@ -1,25 +1,34 @@
 package br.com.btg.game.jokenpo.enumeration;
 
+import java.util.Arrays;
+
+
 public enum EnumException {
 
-    GENERIC_ERROR("ERR-0001", "JOKENPO", "GENERIC ERROR", "GENERIC ERROR", "Ocorreu um erro desconhecido"),
-    INVALID_PARAM("ERR-0002", "JOKENPO", "PARAM", "INVALID", "Parâmetro inválido"),
+    GENERIC_ERROR("ERR-0001", "JOKENPO", "GENERIC ERROR", "GENERIC ERROR", "Generic error"),
+    INVALID_PARAM("ERR-0002", "JOKENPO", "PARAM", "INVALID", "Invalid parameter"),
 
     // PLAYER
-    PLAYER_NOT_FOUND("ERR-1001", "JOKENPO", "PLAYER", "NOT FOUND", "Jogador não localizado"),
-    PLAYER_ALREADY_EXISTS("ERR-1002", "JOKENPO", "PLAYER", "ALREADY EXISTS", "Jogador já cadastrado"),
-    PLAYER_INVALID_NAME("ERR-1003", "JOKENPO", "PLAYER", "NAME", "Nome inválido"),
-    PLAYER_SAVE_ERROR("ERR-1004", "JOKENPO", "PLAYER", "SAVE", "Erro ao salvar Jogador"),
-    PLAYER_DELETE_ERROR("ERR-1005", "JOKENPO", "PLAYER", "SAVE", "Erro ao excluir Jogador"),
-    PLAYER_FIND_ALL_ERROR("ERR-1006", "JOKENPO", "PLAYER", "FIND ALL", "Erro ao localizar os Jogadores"),
+    PLAYER_NOT_FOUND("ERR-1001", "JOKENPO", "PLAYER", "NOT FOUND", "Player not found"),
+    PLAYER_ALREADY_EXISTS("ERR-1002", "JOKENPO", "PLAYER", "ALREADY EXISTS", "Player already registered"),
+    PLAYER_INVALID_NAME("ERR-1003", "JOKENPO", "PLAYER", "NAME", "Invalid player name"),
+    PLAYER_SAVE_ERROR("ERR-1004", "JOKENPO", "PLAYER", "SAVE", "Error saving the player"),
+    PLAYER_DELETE_ERROR("ERR-1005", "JOKENPO", "PLAYER", "SAVE", "Error deleting the player"),
+    PLAYER_FIND_ALL_ERROR("ERR-1006", "JOKENPO", "PLAYER", "FIND ALL", "Error at looking for the players"),
 
     // MOVEMENT
-    MOVEMENT_NOT_FOUND("ERR-2001", "JOKENPO", "MOVEMENT", "NOT FOUND", "Jogada não localizada"),
-    MOVEMENT_ALREADY_EXISTS("ERR-2002", "JOKENPO", "MOVEMENT", "ALREADY EXISTS", "Este jogador já jogou anteriormente"),
-    MOVEMENT_INVALID("ERR-2003", "JOKENPO", "MOVEMENT", "INVALID", "Jogada inválida"),
-    MOVEMENT_SAVE_ERROR("ERR-2004", "JOKENPO", "MOVEMENT", "SAVE", "Erro ao salvar Jogada"),
-    MOVEMENT_DELETE_ERROR("ERR-2005", "JOKENPO", "MOVEMENT", "SAVE", "Erro ao excluir Jogada"),
-    MOVEMENT_FIND_ALL_ERROR("ERR-2006", "JOKENPO", "MOVEMENT", "FIND ALL", "Erro ao localizar as Jogadas");
+    MOVEMENT_NOT_FOUND("ERR-2001", "JOKENPO", "MOVEMENT", "NOT FOUND", "Movement not found"),
+    MOVEMENT_ALREADY_EXISTS("ERR-2002", "JOKENPO", "MOVEMENT", "ALREADY EXISTS", "This player has played before"),
+    MOVEMENT_INVALID("ERR-2003", "JOKENPO", "MOVEMENT", "INVALID", "Invalid movement"),
+    MOVEMENT_SAVE_ERROR("ERR-2004", "JOKENPO", "MOVEMENT", "SAVE", "Error saving"),
+    MOVEMENT_DELETE_ERROR("ERR-2005", "JOKENPO", "MOVEMENT", "SAVE", "Error deleting"),
+    MOVEMENT_FIND_ALL_ERROR("ERR-2006", "JOKENPO", "MOVEMENT", "FIND ALL", "Error locating movements"),
+
+    // JOCKENPO - PLAY
+    NOBODY_PLAYING("ERR-3001", "JOKENPO", "PLAY", "NOBODY", "There's no one playing"),
+    INSUFFICIENT_PLAYERS("ERR-3002", "JOKENPO", "PLAY", "INSUFFICIENT PLAYERS", "Insufficient number of players"),
+    INSUFFICIENT_MOVEMENTS("ERR-3002", "JOKENPO", "PLAY", "INSUFFICIENT MOVEMENTS", "Number of movements still insufficient"),
+    PLAYERS_PENDING("ERR-3003", "JOKENPO", "PLAY", "PLAYERS PENDING", "There are players who have not yet chosen");
 
     private String code;
     private String origin;
@@ -59,16 +68,13 @@ public enum EnumException {
         this.message = message;
     }
 
-    /*
-    public static EnumJokenpoException getEnumJokenpoExceptionByCode(String code){
-        for (EnumJokenpoException elem : Arrays.asList(EnumJokenpoException.values())) {
+    public static EnumException getEnumExceptionByCode(String code){
+        for (EnumException elem : Arrays.asList(EnumException.values())) {
             if (code.equals(elem.getCode())) {
                 return elem;
             }
         }
-        return EnumJokenpoException.GENERIC_ERROR;
+        return EnumException.GENERIC_ERROR;
     }
-    */
-
 
 }

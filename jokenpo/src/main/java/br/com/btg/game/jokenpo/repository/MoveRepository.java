@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 import br.com.btg.game.jokenpo.enumeration.EnumException;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * OBSERVACAO : Poderia colocar a classe como interface e extender ela ao JpaRepository.
@@ -47,6 +49,18 @@ public class MoveRepository {
             throw new JokenpoException(EnumException.MOVEMENT_FIND_ALL_ERROR);
         }
         return MoveSingleton.getInstance();
+    }
+
+    public MoveEntity findByPlayerName(String playerName) throws JokenpoException {
+        List<MoveEntity> list = findAll().stream()
+                .filter(elem -> (elem.getPlayer().getName().compareToIgnoreCase(playerName) == 0))
+                .collect(Collectors.toList());
+        Optional<MoveEntity> opt = list.stream().findFirst();
+        if(opt.isPresent()){
+            return opt.get();
+        }
+        LOGGER.error("Player movement not found : {}", playerName);
+        throw new JokenpoException(EnumException.MOVEMENT_NOT_FOUND);
     }
 
 }

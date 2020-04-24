@@ -20,6 +20,11 @@ public final class MoveSingleton {
         return MOVE_INSTANCE;
     }
 
+    public static List<MoveEntity> clear(){
+        MOVE_INSTANCE = new ArrayList<MoveEntity>();
+        return getInstance();
+    }
+
     public String getInfo() {
         return this.INFO;
     }

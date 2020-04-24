@@ -52,7 +52,7 @@ public enum EnumMovement {
                 return elem;
             }
         }
-        throw new JokenpoException(EnumException.GENERIC_ERROR);
+        throw new JokenpoException(EnumException.MOVEMENT_NOT_FOUND);
     }
 
 }

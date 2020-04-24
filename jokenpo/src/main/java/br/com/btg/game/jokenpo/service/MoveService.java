@@ -42,18 +42,23 @@ public class MoveService {
             throw new JokenpoException(EnumException.MOVEMENT_INVALID);
         }
         LOGGER.debug("Move : {}", move.toString());
+
         // identify the player
         PlayerEntity playerEntity = this.playerService.getEntityByName(move.getPlayerName());
+
         // check if exists just one movement for these player
         this.verifyIfAlreadyMoved(playerEntity);
+
         // identify the movement
         EnumMovement movement = EnumMovement.getEnumMovementByName(move.getMovement());
         if(Objects.isNull(movement)){
             LOGGER.error("Movement not found");
             throw new JokenpoException(EnumException.MOVEMENT_NOT_FOUND);
         }
+
         // save entity object
         MoveEntity moveEntity = this.moveRepository.save(new MoveEntity(playerEntity, movement));
+
         // convert entity to response
         return MoveMapper.entityToResponse(moveEntity);
     }
@@ -70,7 +75,6 @@ public class MoveService {
         return response;
     }
 
-/*
     public Boolean deleteByPlayerName(String playerName) throws JokenpoException {
         if(StringUtils.isEmpty(playerName)){
             LOGGER.error("Player name invalid");
@@ -81,7 +85,6 @@ public class MoveService {
         LOGGER.debug("Removing movement");
         return this.moveRepository.delete(entity);
     }
-*/
 
     private void verifyIfAlreadyMoved(PlayerEntity player) throws JokenpoException {
         long count = this.moveRepository.findAll()
