@@ -2,6 +2,8 @@ package br.com.btg.game.jokenpo.dto.api;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
+import java.sql.Timestamp;
+
 public class ApiResponse<T> {
 
     private Meta meta;
@@ -10,6 +12,7 @@ public class ApiResponse<T> {
     private T data;
 
     public ApiResponse(T data) {
+        this.meta = new Meta(new Timestamp(System.currentTimeMillis()));
         this.data = data;
     }
 

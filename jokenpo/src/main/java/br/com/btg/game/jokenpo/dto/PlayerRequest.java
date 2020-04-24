@@ -1,4 +1,4 @@
-package br.com.btg.game.jokenpo.dto.player;
+package br.com.btg.game.jokenpo.dto;
 
 import javax.validation.constraints.NotNull;
 import java.util.Objects;

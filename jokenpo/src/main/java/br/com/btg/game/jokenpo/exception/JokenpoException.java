@@ -1,11 +1,11 @@
 package br.com.btg.game.jokenpo.exception;
 
-import br.com.btg.game.jokenpo.exception.enums.EnumJokenpoException;
+import br.com.btg.game.jokenpo.enums.EnumException;
 
 public class JokenpoException extends Exception {
 
-    public JokenpoException(EnumJokenpoException enumJokenpoException){
-        super(enumJokenpoException.getCode());
+    public JokenpoException(EnumException enumException){
+        super(enumException.getCode() + " - " + enumException.getMessage());
     }
 
     public JokenpoException(String errorMessage){

@@ -1,34 +1,34 @@
 package br.com.btg.game.jokenpo.dto.api;
 
-import br.com.btg.game.jokenpo.exception.enums.EnumJokenpoException;
+import br.com.btg.game.jokenpo.enums.EnumException;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiErrorResponse<T> extends ApiResponse<T> {
 
-    private EnumJokenpoException error;
+    private EnumException error;
 
     public ApiErrorResponse() {
         super(null);
-        this.error = EnumJokenpoException.GENERIC_ERROR;
+        this.error = EnumException.GENERIC_ERROR;
     }
 
     public ApiErrorResponse(String errorMessage) {
         super(null);
-        this.error = EnumJokenpoException.GENERIC_ERROR;
+        this.error = EnumException.GENERIC_ERROR;
         this.error.setMessage(errorMessage);
     }
 
-    public ApiErrorResponse(EnumJokenpoException error) {
+    public ApiErrorResponse(EnumException error) {
         super(null);
         this.error = error;
     }
 
-    public EnumJokenpoException getError() {
+    public EnumException getError() {
         return error;
     }
 
-    public void setError(EnumJokenpoException error) {
+    public void setError(EnumException error) {
         this.error = error;
     }
 
