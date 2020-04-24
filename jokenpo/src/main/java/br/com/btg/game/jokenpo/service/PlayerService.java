@@ -4,9 +4,9 @@ import br.com.btg.game.jokenpo.dto.PlayerRequest;
 import br.com.btg.game.jokenpo.dto.PlayerResponse;
 import br.com.btg.game.jokenpo.entity.PlayerEntity;
 import br.com.btg.game.jokenpo.entity.mapper.PlayerMapper;
+import br.com.btg.game.jokenpo.enumeration.EnumException;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
 import br.com.btg.game.jokenpo.repository.PlayerRepository;
-import br.com.btg.game.jokenpo.enumeration.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,14 +38,6 @@ public class PlayerService {
         PlayerEntity entity = PlayerMapper.requestToEntity(player);
         LOGGER.debug("Inserting player");
         entity = this.playerRepository.save(entity);
-/*
-System.out.println("AAAAAAAAAAAAAAAAAAAAAAA");
-List<EnumMovement> teste = EnumMovement.SPOCK.getWeakness();
-for(EnumMovement e : teste){
-    System.out.println(e.getName());
-}
-System.out.println("BBBBBBBBBBBBBBBBBBBBBBB");
-*/
         LOGGER.debug("Creating response object");
         return PlayerMapper.entityToResponse(entity);
     }

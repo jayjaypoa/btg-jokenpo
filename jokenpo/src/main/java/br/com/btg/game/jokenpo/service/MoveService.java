@@ -2,14 +2,13 @@ package br.com.btg.game.jokenpo.service;
 
 import br.com.btg.game.jokenpo.dto.MoveRequest;
 import br.com.btg.game.jokenpo.dto.MoveResponse;
-import br.com.btg.game.jokenpo.dto.PlayerResponse;
 import br.com.btg.game.jokenpo.entity.MoveEntity;
 import br.com.btg.game.jokenpo.entity.PlayerEntity;
 import br.com.btg.game.jokenpo.entity.mapper.MoveMapper;
-import br.com.btg.game.jokenpo.entity.mapper.PlayerMapper;
+import br.com.btg.game.jokenpo.enumeration.EnumException;
+import br.com.btg.game.jokenpo.enumeration.EnumMovement;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
 import br.com.btg.game.jokenpo.repository.MoveRepository;
-import br.com.btg.game.jokenpo.enumeration.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -75,15 +74,19 @@ public class MoveService {
         return response;
     }
 
-    public Boolean deleteByPlayerName(String playerName) throws JokenpoException {
+    public List<MoveResponse> deleteByPlayerName(String playerName) throws JokenpoException {
         if(StringUtils.isEmpty(playerName)){
             LOGGER.error("Player name invalid");
             throw new JokenpoException(EnumException.INVALID_PARAM);
         }
         LOGGER.debug("Finding movement by player name : {}", playerName);
         MoveEntity entity = this.moveRepository.findByPlayerName(playerName);
-        LOGGER.debug("Removing movement");
-        return this.moveRepository.delete(entity);
+        LOGGER.debug("Deleting movement");
+        if(this.moveRepository.delete(entity)){
+            return this.getAll();
+        };
+        LOGGER.error("Error deleting movement");
+        throw new JokenpoException(EnumException.MOVEMENT_DELETE_ERROR);
     }
 
     private void verifyIfAlreadyMoved(PlayerEntity player) throws JokenpoException {

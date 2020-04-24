@@ -1,6 +1,5 @@
 package br.com.btg.game.jokenpo.entity;
-
-import br.com.btg.game.jokenpo.enumeration.EnumMovement;
+import br.com.btg.game.jokenpo.enumeration.*;
 import javax.persistence.Entity;
 import java.util.Objects;
 

@@ -14,9 +14,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * OBSERVACAO : Poderia colocar a classe como interface e extender ela ao JpaRepository.
+ * OBSERVACAO : Poderia colocar a classe como interface e extends ao JpaRepository.
  * Como o uso de banco de dados nao era obrigatorio, optei por utilizar o padrao Singleton.
- * Contudo, pela decisao de utilizar o Singleton e List, tive que adaptar os repositories.
+ * Contudo, pela decisao de utilizar o Singleton e List, tive que adaptar os
+ * repositories (save, delete, findAll, entre outros), conforme abaixo.
  *
  * */
 

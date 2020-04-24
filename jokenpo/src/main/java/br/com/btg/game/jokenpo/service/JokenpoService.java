@@ -3,12 +3,11 @@ package br.com.btg.game.jokenpo.service;
 import br.com.btg.game.jokenpo.dto.JokenpoResponse;
 import br.com.btg.game.jokenpo.dto.MoveResponse;
 import br.com.btg.game.jokenpo.dto.PlayerResponse;
+import br.com.btg.game.jokenpo.enumeration.EnumException;
+import br.com.btg.game.jokenpo.enumeration.EnumMovement;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
-import br.com.btg.game.jokenpo.repository.MoveRepository;
-import br.com.btg.game.jokenpo.repository.PlayerRepository;
 import br.com.btg.game.jokenpo.util.MoveSingleton;
 import br.com.btg.game.jokenpo.util.PlayerSingleton;
-import br.com.btg.game.jokenpo.enumeration.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,18 +28,12 @@ public class JokenpoService {
 
     private PlayerService playerService;
     private MoveService moveService;
-    private PlayerRepository playerRepository;
-    private MoveRepository moveRepository;
 
     @Autowired
     public JokenpoService(PlayerService playerService,
-                          MoveService moveService,
-                          PlayerRepository playerRepository,
-                          MoveRepository moveRepository){
+                          MoveService moveService){
         this.playerService = playerService;
         this.moveService = moveService;
-        this.playerRepository = playerRepository;
-        this.moveRepository = moveRepository;
     }
 
     public List<PlayerResponse> clear() throws JokenpoException {

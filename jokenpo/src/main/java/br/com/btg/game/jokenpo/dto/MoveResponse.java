@@ -1,7 +1,6 @@
 package br.com.btg.game.jokenpo.dto;
 
-import br.com.btg.game.jokenpo.enumeration.EnumMovement;
-
+import br.com.btg.game.jokenpo.enumeration.*;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 

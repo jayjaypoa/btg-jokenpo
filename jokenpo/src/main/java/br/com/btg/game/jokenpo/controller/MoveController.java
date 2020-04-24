@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 
 @RestController
 @RequestMapping("/move")
@@ -29,8 +30,8 @@ public class MoveController {
                 new ApiResponse<>(this.moveService.insert(moveRequest)));
     }
 
-    @DeleteMapping(value = "{playerName}")
-    public ResponseEntity<Object> delete(@PathVariable String playerName) throws JokenpoException {
+    @DeleteMapping(value = "")
+    public ResponseEntity<Object> delete(@PathParam("playerName") String playerName) throws JokenpoException {
         return ResponseEntity.ok(new ApiResponse<>(this.moveService.deleteByPlayerName(playerName)));
     }
 
