@@ -24,6 +24,11 @@ Exemplos:
 4. Jogar 
 5. Resultado Jogador 1 Vitória
 
+#### FLUXO DO JOGO :
+
+![Fluxo do jogo](https://i.imgur.com/nG2CJTg.png)
+
+
 #### ABORDAGEM TÉCNICA :
 
 - Linguagem: Java 8
