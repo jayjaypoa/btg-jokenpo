@@ -60,7 +60,7 @@ public class PlayerRepository {
         if(opt.isPresent()){
             return opt.get();
         }
-        LOGGER.error("Player not found : {}", name);
+        LOGGER.info("Player not found : {}", name);
         throw new JokenpoException(EnumException.PLAYER_NOT_FOUND);
     }
 

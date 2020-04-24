@@ -9,6 +9,7 @@ import br.com.btg.game.jokenpo.enumeration.EnumException;
 import br.com.btg.game.jokenpo.enumeration.EnumMovement;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
 import br.com.btg.game.jokenpo.repository.MoveRepository;
+import br.com.btg.game.jokenpo.repository.PlayerRepository;
 import br.com.btg.game.jokenpo.util.MoveSingleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,13 +26,14 @@ public class MoveService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MoveService.class);
 
-    private PlayerService playerService;
     private MoveRepository moveRepository;
+    private PlayerRepository playerRepository;
 
     @Autowired
-    public MoveService(PlayerService playerService, MoveRepository moveRepository){
-        this.playerService = playerService;
+    public MoveService(MoveRepository moveRepository,
+                       PlayerRepository playerRepository){
         this.moveRepository = moveRepository;
+        this.playerRepository = playerRepository;
     }
 
     public MoveResponse insert(MoveRequest move) throws JokenpoException {
@@ -44,7 +46,7 @@ public class MoveService {
         LOGGER.debug("Move : {}", move.toString());
 
         // identify the player
-        PlayerEntity playerEntity = this.playerService.getEntityByName(move.getPlayerName());
+        PlayerEntity playerEntity = this.playerRepository.findByName(move.getPlayerName());
 
         // check if exists just one movement for these player
         this.verifyIfAlreadyMoved(playerEntity);

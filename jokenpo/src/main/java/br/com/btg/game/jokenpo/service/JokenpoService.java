@@ -75,7 +75,7 @@ public class JokenpoService {
     private void checkRequirements() throws JokenpoException {
         if(this.playerService.getAll().size() == 0){
             throw new JokenpoException(EnumException.NOBODY_PLAYING);
-        } else if (this.moveService.getAll().size() <= 1){
+        } else if (this.playerService.getAll().size() <= 1){
             throw new JokenpoException(EnumException.INSUFFICIENT_PLAYERS);
         } else if (this.moveService.getAll().size() <= 1){
             throw new JokenpoException(EnumException.INSUFFICIENT_MOVEMENTS);

@@ -24,10 +24,12 @@ public class PlayerService {
     private static final Logger LOGGER = LoggerFactory.getLogger(PlayerService.class);
 
     private PlayerRepository playerRepository;
+    private MoveService moveService;
 
     @Autowired
-    public PlayerService(PlayerRepository playerRepository){
+    public PlayerService(PlayerRepository playerRepository, MoveService moveService){
         this.playerRepository = playerRepository;
+        this.moveService = moveService;
     }
 
     public PlayerResponse insert(PlayerRequest player) throws JokenpoException {
@@ -64,6 +66,11 @@ public class PlayerService {
         if(StringUtils.isEmpty(name)){
             LOGGER.error("Param name invalid");
             throw new JokenpoException(EnumException.INVALID_PARAM);
+        }
+        try {
+            this.moveService.deleteByPlayerName(name);
+        } catch (JokenpoException ex){
+            LOGGER.debug("Player without movement already");
         }
         LOGGER.debug("Finding player by name : {}", name);
         PlayerEntity entity = this.playerRepository.findByName(name);
