@@ -2,7 +2,7 @@ package br.com.btg.game.jokenpo.repository;
 
 import br.com.btg.game.jokenpo.entity.PlayerEntity;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
-import br.com.btg.game.jokenpo.enums.EnumException;
+import br.com.btg.game.jokenpo.enumeration.EnumException;
 import br.com.btg.game.jokenpo.util.PlayerSingleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,8 +59,8 @@ public class PlayerRepository {
         if(opt.isPresent()){
             return opt.get();
         }
-        LOGGER.error("Error finding player");
-        throw new JokenpoException(EnumException.PLAYER_FIND_ERROR);
+        LOGGER.error("Player not found : {}", name);
+        throw new JokenpoException(EnumException.PLAYER_NOT_FOUND);
     }
 
 }

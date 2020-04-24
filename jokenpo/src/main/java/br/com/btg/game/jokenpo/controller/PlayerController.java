@@ -1,7 +1,7 @@
 package br.com.btg.game.jokenpo.controller;
 
-import br.com.btg.game.jokenpo.dto.api.ApiResponse;
 import br.com.btg.game.jokenpo.dto.PlayerRequest;
+import br.com.btg.game.jokenpo.dto.api.ApiResponse;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
 import br.com.btg.game.jokenpo.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +30,9 @@ public class PlayerController {
                 new ApiResponse<>(this.playerService.insert(playerRequest)));
     }
 
-    @DeleteMapping(value = "{name}")
-    public ResponseEntity<Object> delete(@PathVariable String name) throws JokenpoException {
-        return ResponseEntity.ok(new ApiResponse<>(this.playerService.deleteByName(name)));
+    @DeleteMapping(value = "")
+    public ResponseEntity<Object> delete(@PathParam("playerName") String playerName) throws JokenpoException {
+        return ResponseEntity.ok(new ApiResponse<>(this.playerService.deleteByName(playerName)));
     }
 
     @GetMapping(value = "")

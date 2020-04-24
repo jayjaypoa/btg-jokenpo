@@ -1,13 +1,17 @@
 package br.com.btg.game.jokenpo.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.util.Objects;
 
-@Entity
-public class PlayerEntity extends BaseEntity {
+/**
+ * OBSERVACAO : Poderia colocar um extends para uma classe BaseEntity com ID Generate,
+ * mas como nao foi utilizado banco de dados, optei por nao inserir isto.
+ *
+ * */
 
-    @Column(unique=true)
+@Entity
+public class PlayerEntity {
+
     private String name;
 
     public PlayerEntity(){

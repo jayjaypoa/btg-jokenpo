@@ -1,6 +1,6 @@
 package br.com.btg.game.jokenpo.exception;
 
-import br.com.btg.game.jokenpo.enums.EnumException;
+import br.com.btg.game.jokenpo.enumeration.EnumException;
 
 public class JokenpoException extends Exception {
 

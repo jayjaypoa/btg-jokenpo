@@ -1,6 +1,6 @@
 package br.com.btg.game.jokenpo.dto.api;
 
-import br.com.btg.game.jokenpo.enums.EnumException;
+import br.com.btg.game.jokenpo.enumeration.EnumException;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)

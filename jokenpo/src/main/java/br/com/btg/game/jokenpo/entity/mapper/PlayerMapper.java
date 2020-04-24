@@ -16,13 +16,11 @@ public class PlayerMapper {
 
     public static PlayerEntity requestToEntity(PlayerRequest playerRequest){
         LOGGER.debug("Converting: request object to entity object");
-        MAPPER.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         return MAPPER.map(playerRequest, PlayerEntity.class);
     }
 
     public static PlayerResponse entityToResponse(PlayerEntity entity) {
         LOGGER.debug("Converting: entity object to response object");
-        MAPPER.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         return MAPPER.map(entity, PlayerResponse.class);
     }
 

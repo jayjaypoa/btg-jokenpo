@@ -6,7 +6,7 @@ import br.com.btg.game.jokenpo.entity.PlayerEntity;
 import br.com.btg.game.jokenpo.entity.mapper.PlayerMapper;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
 import br.com.btg.game.jokenpo.repository.PlayerRepository;
-import br.com.btg.game.jokenpo.enums.*;
+import br.com.btg.game.jokenpo.enumeration.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +38,14 @@ public class PlayerService {
         PlayerEntity entity = PlayerMapper.requestToEntity(player);
         LOGGER.debug("Inserting player");
         entity = this.playerRepository.save(entity);
+/*
+System.out.println("AAAAAAAAAAAAAAAAAAAAAAA");
+List<EnumMovement> teste = EnumMovement.SPOCK.getWeakness();
+for(EnumMovement e : teste){
+    System.out.println(e.getName());
+}
+System.out.println("BBBBBBBBBBBBBBBBBBBBBBB");
+*/
         LOGGER.debug("Creating response object");
         return PlayerMapper.entityToResponse(entity);
     }
@@ -54,13 +62,12 @@ public class PlayerService {
         return response;
     }
 
-    public PlayerResponse getByName(String name) throws JokenpoException {
-        LOGGER.debug("Finding player : {}", name);
-        PlayerEntity entity = this.playerRepository.findByName(name);
-        return PlayerMapper.entityToResponse(entity);
+    public PlayerEntity getEntityByName(String name) throws JokenpoException {
+        LOGGER.debug("Finding player by name : {}", name);
+        return this.playerRepository.findByName(name);
     }
 
-    public Boolean deleteByName(String name) throws JokenpoException {
+    public List<PlayerResponse> deleteByName(String name) throws JokenpoException {
         if(StringUtils.isEmpty(name)){
             LOGGER.error("Param name invalid");
             throw new JokenpoException(EnumException.INVALID_PARAM);
@@ -68,7 +75,11 @@ public class PlayerService {
         LOGGER.debug("Finding player by name : {}", name);
         PlayerEntity entity = this.playerRepository.findByName(name);
         LOGGER.debug("Removing player");
-        return this.playerRepository.delete(entity);
+        if(this.playerRepository.delete(entity)){
+            return this.getAll();
+        }
+        LOGGER.error("Error deleting player");
+        throw new JokenpoException(EnumException.PLAYER_DELETE_ERROR);
     }
 
     private Boolean verifyIfAlreadyExistsByName(String name) {

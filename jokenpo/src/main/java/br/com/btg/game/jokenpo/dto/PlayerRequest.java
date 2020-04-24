@@ -1,11 +1,14 @@
 package br.com.btg.game.jokenpo.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 public class PlayerRequest {
 
-    @NotNull
+    @NotNull( message = "Player name is required" )
+    @JsonProperty(value = "playerName")
     private String name;
 
     public PlayerRequest(){
