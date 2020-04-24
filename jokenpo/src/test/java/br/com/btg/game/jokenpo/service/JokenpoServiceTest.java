@@ -90,6 +90,94 @@ public class JokenpoServiceTest {
         Assert.assertEquals(expected, response.getGameResult());
     }
 
+    @Test
+    public void testLizardVersusScissorsVersusPaper() throws JokenpoException {
+        // clear singleton data
+        this.playerService.clearAll();
+        this.moveService.clearAll();
+        // insert players
+        List<String> playerNames = new ArrayList<>(Arrays.asList("P1", "P2", "P3"));
+        this.insertManyDifferentPlayers(playerNames);
+        // insert movements
+        this.moveService.insert(new MoveRequest("P1", EnumMovement.LIZARD.getName()));
+        this.moveService.insert(new MoveRequest("P2", EnumMovement.SCISSORS.getName()));
+        this.moveService.insert(new MoveRequest("P3", EnumMovement.PAPER.getName()));
+        JokenpoResponse response = this.jokenpoService.play();
+        Assert.assertNotNull(response.getGameResult());
+        String expected = "P2 IS THE WINNER!".toUpperCase().trim();
+        String notExpected = "NOBODY WON!".toUpperCase().trim();
+        Assert.assertNotEquals(notExpected, response.getGameResult());
+        Assert.assertEquals(expected, response.getGameResult());
+    }
+
+    @Test
+    public void testSpockVersusPaper() throws JokenpoException {
+        // clear singleton data
+        this.playerService.clearAll();
+        this.moveService.clearAll();
+        // insert players
+        List<String> playerNames = new ArrayList<>(Arrays.asList("P1", "P2"));
+        this.insertManyDifferentPlayers(playerNames);
+        // insert movements
+        this.moveService.insert(new MoveRequest("P1", EnumMovement.SPOCK.getName()));
+        this.moveService.insert(new MoveRequest("P2", EnumMovement.PAPER.getName()));
+        JokenpoResponse response = this.jokenpoService.play();
+        Assert.assertNotNull(response.getGameResult());
+        String expected = "P2 IS THE WINNER!".toUpperCase().trim();
+        String notExpected = "NOBODY WON!".toUpperCase().trim();
+        Assert.assertNotEquals(notExpected, response.getGameResult());
+        Assert.assertEquals(expected, response.getGameResult());
+    }
+
+    @Test
+    public void testLizardVersusScissors() throws JokenpoException {
+        // clear singleton data
+        this.playerService.clearAll();
+        this.moveService.clearAll();
+        // insert players
+        List<String> playerNames = new ArrayList<>(Arrays.asList("P1", "P2"));
+        this.insertManyDifferentPlayers(playerNames);
+        // insert movements
+        this.moveService.insert(new MoveRequest("P1", EnumMovement.SCISSORS.getName()));
+        this.moveService.insert(new MoveRequest("P2", EnumMovement.LIZARD.getName()));
+        JokenpoResponse response = this.jokenpoService.play();
+        Assert.assertNotNull(response.getGameResult());
+        String expected = "P1 IS THE WINNER!".toUpperCase().trim();
+        String notExpected = "NOBODY WON!".toUpperCase().trim();
+        Assert.assertNotEquals(notExpected, response.getGameResult());
+        Assert.assertEquals(expected, response.getGameResult());
+    }
+
+    @Test(expected = JokenpoException.class)
+    public void textInvalidMovementWithException() throws JokenpoException {
+        // clear singleton data
+        this.playerService.clearAll();
+        this.moveService.clearAll();
+        // insert players
+        List<String> playerNames = new ArrayList<>(Arrays.asList("P1", "P2"));
+        this.insertManyDifferentPlayers(playerNames);
+        // insert movements
+        this.moveService.insert(new MoveRequest("P1", EnumMovement.SCISSORS.getName()));
+        this.moveService.insert(new MoveRequest("P2", "INEXISTENTE"));
+    }
+
+    @Test
+    public void testHistoryWithSucess() throws JokenpoException {
+        // clear singleton data
+        this.playerService.clearAll();
+        this.moveService.clearAll();
+        // insert players
+        List<String> playerNames = new ArrayList<>(Arrays.asList("P1", "P2", "P3"));
+        this.insertManyDifferentPlayers(playerNames);
+        // insert movements
+        this.moveService.insert(new MoveRequest("P1", EnumMovement.SCISSORS.getName()));
+        this.moveService.insert(new MoveRequest("P2", EnumMovement.LIZARD.getName()));
+        this.moveService.insert(new MoveRequest("P3", EnumMovement.STONE.getName()));
+        JokenpoResponse response = this.jokenpoService.play();
+        Assert.assertNotEquals(0, response.getHistory().size());
+        Assert.assertEquals(3, response.getHistory().size());
+    }
+
     private List<PlayerResponse> insertManyDifferentPlayers(List<String> playerNames) throws JokenpoException {
         List<PlayerResponse> list = new ArrayList<>();
         for(String name : playerNames){
