@@ -34,7 +34,7 @@ Exemplos:
 - Não há utilização de banco de dados.
 - Não há utilização de bibliotecas utilitárias externas.
 
-##DEMAIS REGRAS E OBSERVAÇÕES : 
+## DEMAIS REGRAS E OBSERVAÇÕES : 
 
 - Foi utilizado padrão Singleton para armazenar em memória as informações.
 - O nome do jogador deve possuir ao menos 1 caractere.
@@ -47,13 +47,13 @@ Exemplos:
 - O resultado final exibe o(s) ganhador(es) e o histórico com o que cada um fez na rodada.
 - Após exibição do resultado final, as jogadas (move/movements) são zerados/apagados, permitindo assim que os mesmos jogadores realizem nova jogada. 
 
-##ENDPOINTS E EXEMPLOS DE CHAMADAS : 
+## ENDPOINTS E EXEMPLOS DE CHAMADAS : 
 
-###1. JOGADORES (Player)
+### 1. JOGADORES (Player)
 
-#####1.1 Inserção
+##### 1.1 Inserção
 
-######1.1.1 Exemplo de Chamada
+###### 1.1.1 Exemplo de Chamada
 
 ```curl
 curl --location --request POST 'http://localhost:8080/v1/btg/jokenpo/player' \
@@ -63,7 +63,7 @@ curl --location --request POST 'http://localhost:8080/v1/btg/jokenpo/player' \
 }'
 ```
 
-######1.1.2 Exemplo de Retorno de Sucesso - 200 OK
+###### 1.1.2 Exemplo de Retorno de Sucesso - 200 OK
 
 ```json
 {
@@ -76,15 +76,15 @@ curl --location --request POST 'http://localhost:8080/v1/btg/jokenpo/player' \
 }
 ```
 
-#####1.2 Exclusão
+##### 1.2 Exclusão
 
-######1.2.1 Exemplo de Chamada
+###### 1.2.1 Exemplo de Chamada
 
 ```curl
 curl --location --request DELETE 'http://localhost:8080/v1/btg/jokenpo/player/?playerName=JOGADOR%202'
 ```
 
-######1.2.2 Exemplo de Retorno de Sucesso - 200 OK
+###### 1.2.2 Exemplo de Retorno de Sucesso - 200 OK
 
 ```json
 {
@@ -108,15 +108,15 @@ curl --location --request DELETE 'http://localhost:8080/v1/btg/jokenpo/player/?p
 }
 ```
 
-#####1.3 Listagem
+##### 1.3 Listagem
 
-######1.3.1 Exemplo de Chamada
+###### 1.3.1 Exemplo de Chamada
 
 ```curl
 curl --location --request GET 'http://localhost:8080/v1/btg/jokenpo/player'
 ```
 
-######1.3.2 Exemplo de Retorno de Sucesso - 200 OK
+###### 1.3.2 Exemplo de Retorno de Sucesso - 200 OK
 
 ```json
 {
@@ -143,11 +143,11 @@ curl --location --request GET 'http://localhost:8080/v1/btg/jokenpo/player'
 }
 ```
 
-###2. JOGADA (Move/Movement)
+### 2. JOGADA (Move/Movement)
 
-#####2.1 Inserção
+##### 2.1 Inserção
 
-######2.1.1 Exemplo de Chamada
+###### 2.1.1 Exemplo de Chamada
 
 ```curl
 curl --location --request POST 'http://localhost:8080/v1/btg/jokenpo/move' \
@@ -158,7 +158,7 @@ curl --location --request POST 'http://localhost:8080/v1/btg/jokenpo/move' \
 }'
 ```
 
-######2.1.2 Exemplo de Retorno de Sucesso - 200 OK
+###### 2.1.2 Exemplo de Retorno de Sucesso - 200 OK
 
 ```json
 {
@@ -174,15 +174,15 @@ curl --location --request POST 'http://localhost:8080/v1/btg/jokenpo/move' \
 }
 ```
 
-#####2.2 Exclusão
+##### 2.2 Exclusão
 
-######2.2.1 Exemplo de Chamada
+###### 2.2.1 Exemplo de Chamada
 
 ```curl
 curl --location --request DELETE 'http://localhost:8080/v1/btg/jokenpo/move?playerName=JOGADOR%201'
 ```
 
-######2.2.2 Exemplo de Retorno de Sucesso - 200 OK
+###### 2.2.2 Exemplo de Retorno de Sucesso - 200 OK
 
 ```json
 {
@@ -212,15 +212,15 @@ curl --location --request DELETE 'http://localhost:8080/v1/btg/jokenpo/move?play
 }
 ```
 
-#####2.3 Listagem
+##### 2.3 Listagem
 
-######2.3.1 Exemplo de Chamada
+###### 2.3.1 Exemplo de Chamada
 
 ```curl
 curl --location --request GET 'http://localhost:8080/v1/btg/jokenpo/move'
 ```
 
-######2.3.2 Exemplo de Retorno de Sucesso - 200 OK
+###### 2.3.2 Exemplo de Retorno de Sucesso - 200 OK
 
 ```json
 {
@@ -256,17 +256,17 @@ curl --location --request GET 'http://localhost:8080/v1/btg/jokenpo/move'
 }
 ```
 
-###3. RESULTADO DO JOGO (Play)
+### 3. RESULTADO DO JOGO (Play)
 
-#####3.1 Obter Resultado do Jogo
+##### 3.1 Obter Resultado do Jogo
 
-######3.1.1 Exemplo de Chamada
+###### 3.1.1 Exemplo de Chamada
 
 ```curl
 curl --location --request GET 'http://localhost:8080/v1/btg/jokenpo/play'
 ```
 
-######3.1.2 Exemplo de Retorno de Sucesso - 200 OK
+###### 3.1.2 Exemplo de Retorno de Sucesso - 200 OK
 
 ```json
 {
@@ -286,7 +286,7 @@ curl --location --request GET 'http://localhost:8080/v1/btg/jokenpo/play'
 }
 ```
 
-######3.1.3 Exemplo de Retorno de Erro - Não Há Jogadores Cadastrados/Jogando
+###### 3.1.3 Exemplo de Retorno de Erro - Não Há Jogadores Cadastrados/Jogando
 
 ```json
 {
@@ -298,7 +298,7 @@ curl --location --request GET 'http://localhost:8080/v1/btg/jokenpo/play'
 }
 ```
 
-######3.1.4 Exemplo de Retorno de Erro - Há Jogadores Que Ainda Não Realizaram a Jogada
+###### 3.1.4 Exemplo de Retorno de Erro - Há Jogadores Que Ainda Não Realizaram a Jogada
 
 ```json
 {
@@ -310,15 +310,15 @@ curl --location --request GET 'http://localhost:8080/v1/btg/jokenpo/play'
 }
 ```
 
-#####3.2 Limpar Todos os Dados
+##### 3.2 Limpar Todos os Dados
 
-######3.2.1 Exemplo de Chamada
+###### 3.2.1 Exemplo de Chamada
 
 ```curl
 curl --location --request DELETE 'http://localhost:8080/v1/btg/jokenpo/play'
 ```
 
-######3.2.2 Exemplo de Retorno de Sucesso - 200 OK
+###### 3.2.2 Exemplo de Retorno de Sucesso - 200 OK
 
 ```json
 {
