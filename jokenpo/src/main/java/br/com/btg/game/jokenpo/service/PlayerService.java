@@ -7,6 +7,7 @@ import br.com.btg.game.jokenpo.entity.mapper.PlayerMapper;
 import br.com.btg.game.jokenpo.enumeration.EnumException;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
 import br.com.btg.game.jokenpo.repository.PlayerRepository;
+import br.com.btg.game.jokenpo.util.PlayerSingleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +84,10 @@ public class PlayerService {
             return false;
         }
         return false;
+    }
+
+    public void clearAll(){
+        PlayerSingleton.clear();
     }
 
 }

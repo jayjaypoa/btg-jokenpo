@@ -9,6 +9,7 @@ import br.com.btg.game.jokenpo.enumeration.EnumException;
 import br.com.btg.game.jokenpo.enumeration.EnumMovement;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
 import br.com.btg.game.jokenpo.repository.MoveRepository;
+import br.com.btg.game.jokenpo.util.MoveSingleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,6 +100,10 @@ public class MoveService {
             LOGGER.error("Movement already exists for these player");
             throw new JokenpoException(EnumException.MOVEMENT_ALREADY_EXISTS);
         }
+    }
+
+    public void clearAll(){
+        MoveSingleton.clear();
     }
 
 }

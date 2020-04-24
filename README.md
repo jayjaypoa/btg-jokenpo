@@ -34,7 +34,7 @@ Exemplos:
 - Linguagem: Java 8
 - Framework: Spring Boot 2.2
 - Gerenciamento de dependência: Gradle
-- Realização de Testes Unitário com JUnit : API e Serviços
+- Realização de Testes Unitário: JUnit
 - Utilizada as práticas de Clean Code : Nomes precisos, comentários necessários, DRY (Don’t repeat yourself), entre outros aspectos.
 - Não há utilização de banco de dados.
 - Não há utilização de bibliotecas utilitárias externas.
