@@ -1,6 +1,9 @@
 package br.com.btg.game.jokenpo.service;
 
-import br.com.btg.game.jokenpo.dto.*;
+import br.com.btg.game.jokenpo.dto.JokenpoResponse;
+import br.com.btg.game.jokenpo.dto.MoveRequest;
+import br.com.btg.game.jokenpo.dto.PlayerRequest;
+import br.com.btg.game.jokenpo.dto.PlayerResponse;
 import br.com.btg.game.jokenpo.enumeration.EnumMovement;
 import br.com.btg.game.jokenpo.exception.JokenpoException;
 import org.junit.Assert;

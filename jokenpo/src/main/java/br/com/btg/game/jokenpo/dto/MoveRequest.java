@@ -14,6 +14,9 @@ public class MoveRequest {
     @NotNull( message = "Movement is required")
     private String movement;
 
+    public MoveRequest(){
+    }
+
     public MoveRequest(String playerName, String movement) {
         this.playerName = playerName;
         this.movement = movement;

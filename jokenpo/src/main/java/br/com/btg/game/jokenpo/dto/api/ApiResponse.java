@@ -11,6 +11,9 @@ public class ApiResponse<T> {
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private T data;
 
+    public ApiResponse() {
+    }
+
     public ApiResponse(T data) {
         this.meta = new Meta(new Timestamp(System.currentTimeMillis()));
         this.data = data;
