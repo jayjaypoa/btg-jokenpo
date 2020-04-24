@@ -60,7 +60,7 @@ curl --location --request POST 'http://localhost:8080/v1/btg/jokenpo/player' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 	"playerName" : "JOGADOR 1"
-}'
+}'
 ```
 
 ###### 1.1.2 Exemplo de Retorno de Sucesso - 200 OK
