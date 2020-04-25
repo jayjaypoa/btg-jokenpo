@@ -33,13 +33,13 @@ public class MoveServiceTest {
 
     @Test
     public void insertManyPlayersForTestWithSucess() throws JokenpoException {
-        // clear singleton data
+        // Clear singleton data
         this.playerService.clearAll();
         this.moveService.clearAll();
-        // insert many players
+        // Insert many players
         List<String> playerNames = new ArrayList<>(Arrays.asList("P1", "P2", "P3", "P4", "P5", "P6"));
         List<PlayerResponse> playerResponse = this.insertManyDifferentPlayers(playerNames);
-        // check assertments
+        // Assertments check
         Assert.assertEquals(playerNames.size(), playerResponse.size());
     }
 
@@ -48,6 +48,7 @@ public class MoveServiceTest {
         this.insertManyPlayersForTestWithSucess();
         int playersCounter = this.playerService.getAll().size();
         int movementsCounter = this.moveService.getAll().size();
+        // Assertments check
         Assert.assertEquals(0, movementsCounter);
         Assert.assertNotEquals(0, playersCounter);
     }
@@ -57,6 +58,7 @@ public class MoveServiceTest {
         this.insertManyPlayersForTestWithSucess();
         int expected = 1;
         MoveResponse response = this.moveService.insert(new MoveRequest("P1", "STONE"));
+        // Assertments check
         Assert.assertNotNull(response);
         Assert.assertNotNull(response.getMovement());
         Assert.assertNotNull(response.getPlayer());
@@ -85,6 +87,7 @@ public class MoveServiceTest {
         this.moveService.insert(new MoveRequest("P3", EnumMovement.STONE.getName()));
         this.moveService.insert(new MoveRequest("P4", EnumMovement.SCISSORS.getName()));
         this.moveService.insert(new MoveRequest("P5", EnumMovement.PAPER.getName()));
+        // Assertments check
         Assert.assertEquals(5, this.moveService.getAll().size());
     }
 
@@ -96,6 +99,7 @@ public class MoveServiceTest {
         this.moveService.insert(new MoveRequest("P3", EnumMovement.SCISSORS.getName()));
         int beforeCounter = this.moveService.getAll().size();
         this.moveService.deleteByPlayerName("P2");
+        // Assertments check
         Assert.assertEquals(beforeCounter-1, this.moveService.getAll().size());
     }
 
@@ -107,6 +111,7 @@ public class MoveServiceTest {
         this.moveService.insert(new MoveRequest("P3", EnumMovement.SCISSORS.getName()));
         this.moveService.deleteByPlayerName("P2");
         this.moveService.insert(new MoveRequest("P2", EnumMovement.PAPER.getName()));
+        // Assertments check
         Assert.assertEquals(3, this.moveService.getAll().size());
     }
 

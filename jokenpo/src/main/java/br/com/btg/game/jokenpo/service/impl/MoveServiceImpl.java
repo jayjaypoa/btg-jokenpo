@@ -31,8 +31,7 @@ public class MoveServiceImpl implements MoveService {
     private PlayerRepository playerRepository;
 
     @Autowired
-    public MoveServiceImpl(MoveRepository moveRepository,
-                           PlayerRepository playerRepository){
+    public MoveServiceImpl(MoveRepository moveRepository, PlayerRepository playerRepository){
         this.moveRepository = moveRepository;
         this.playerRepository = playerRepository;
     }

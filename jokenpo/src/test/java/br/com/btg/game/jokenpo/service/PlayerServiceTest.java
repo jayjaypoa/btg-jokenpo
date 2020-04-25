@@ -27,9 +27,9 @@ public class PlayerServiceTest {
 
     @Test
     public void oneInsertWithSucess() throws Exception {
-        // clear singleton data
+        // Clear singleton data
         this.playerService.clearAll();
-        // insert just one player
+        // Insert just one player
         String expectedPlayerName = "PLAYER NAME";
         PlayerResponse playerResponse = this.playerService.insert(new PlayerRequest(expectedPlayerName));
         Assert.assertEquals(expectedPlayerName, playerResponse.getName());
@@ -37,9 +37,9 @@ public class PlayerServiceTest {
 
     @Test(expected = JokenpoException.class)
     public void duplicateInsertForExceptionGenerate() throws Exception {
-        // clear singleton data
+        // Clear singleton data
         this.playerService.clearAll();
-        // insert two twices the same player name
+        // Insert two twices the same player name
         String samePlayerName = "DUPLICATED NAME";
         this.playerService.insert(new PlayerRequest(samePlayerName));
         this.playerService.insert(new PlayerRequest(samePlayerName));
@@ -47,12 +47,12 @@ public class PlayerServiceTest {
 
     @Test
     public void manyDifferentInsertsWithSuccess() throws Exception {
-        // clear singleton data
+        // Clear singleton data
         this.playerService.clearAll();
-        // insert many players
+        // Insert many players
         List<String> playerNames = new ArrayList<>(Arrays.asList("P1", "P2", "P3", "P4", "P5"));
         List<PlayerResponse> playerResponses = this.insertManyDifferentPlayers(playerNames);
-        // check assertments
+        // Assertments check
         int position = 0;
         for (String expectedName : playerNames) {
             Assert.assertEquals(expectedName, playerResponses.get(position).getName());
@@ -62,12 +62,12 @@ public class PlayerServiceTest {
 
     @Test
     public void getAllPlayersWithSucess() throws Exception {
-        // clear singleton data
+        // Clear singleton data
         this.playerService.clearAll();
-        // insert many players
+        // Insert many players
         List<String> playerNames = new ArrayList<>(Arrays.asList("P1", "P2", "P3", "P4", "P5"));
         List<PlayerResponse> playerResponses = this.insertManyDifferentPlayers(playerNames);
-        // check assertments
+        // Assertments check
         Assert.assertEquals(playerNames.size(), playerResponses.size());
         Assert.assertEquals(playerNames.size(), this.playerService.getAll().size());
         Assert.assertEquals(playerResponses.size(), this.playerService.getAll().size());
@@ -75,21 +75,21 @@ public class PlayerServiceTest {
 
     @Test
     public void getEntityByNameWithSucess() throws Exception {
-        // clear singleton data
+        // Clear singleton data
         this.playerService.clearAll();
-        // insert many players
+        // Insert many players
         List<String> playerNames = new ArrayList<>(Arrays.asList("P1", "P2", "P3", "P4", "P5"));
         List<PlayerResponse> playerResponses = this.insertManyDifferentPlayers(playerNames);
         PlayerEntity entity = this.playerService.getEntityByName("P2");
-        // check assertments
+        // Assertments check
         Assert.assertEquals("P2", entity.getName());
     }
 
     @Test(expected = JokenpoException.class)
     public void getEntityByNameWithException() throws Exception {
-        // clear singleton data
+        // Clear singleton data
         this.playerService.clearAll();
-        // insert many players
+        // Insert many players
         List<String> playerNames = new ArrayList<>(Arrays.asList("P1", "P2", "P3", "P4", "P5"));
         this.insertManyDifferentPlayers(playerNames);
         this.playerService.getEntityByName("INEXISTENTE");
@@ -97,24 +97,24 @@ public class PlayerServiceTest {
 
     @Test
     public void deleteByNameWithSucess() throws Exception {
-        // clear singleton data
+        // Clear singleton data
         this.playerService.clearAll();
-        // insert many players
+        // Insert many players
         List<String> playerNames = new ArrayList<>(Arrays.asList("P1", "P2", "P3", "P4", "P5"));
         List<PlayerResponse> playerResponse = this.insertManyDifferentPlayers(playerNames);
         int expected1 = playerNames.size()-1;
         int expected2 = playerResponse.size()-1;
         List<PlayerResponse> list = this.playerService.deleteByName("P1");
-        // check assertments
+        // Assertments check
         Assert.assertEquals(expected1, list.size());
         Assert.assertEquals(expected2, list.size());
     }
 
     @Test(expected = JokenpoException.class)
     public void deleteByNameWithException() throws Exception {
-        // clear singleton data
+        // Clear singleton data
         this.playerService.clearAll();
-        // insert many players
+        // Insert many players
         List<String> playerNames = new ArrayList<>(Arrays.asList("P1", "P2", "P3", "P4", "P5"));
         this.insertManyDifferentPlayers(playerNames);
         this.playerService.deleteByName("INEXISTENTE");
@@ -122,17 +122,17 @@ public class PlayerServiceTest {
 
     @Test
     public void clearAllWithSucess() throws Exception {
-        // clear singleton data
+        // Clear singleton data
         this.playerService.clearAll();
-        // insert many players
+        // Insert many players
         List<String> playerNames = new ArrayList<>(Arrays.asList("P1", "P2", "P3", "P4", "P5"));
         List<PlayerResponse> playerResponse = this.insertManyDifferentPlayers(playerNames);
         Assert.assertEquals(playerNames.size(), playerResponse.size());
-        // clear singleton data
+        // Clear singleton data
         this.playerService.clearAll();
-        // update list
+        // List update
         playerResponse = this.playerService.getAll();
-        // check assertments
+        // Assertments check
         Assert.assertEquals(0, playerResponse.size());
     }
 
